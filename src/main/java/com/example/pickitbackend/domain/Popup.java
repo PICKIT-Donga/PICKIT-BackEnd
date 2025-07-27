@@ -1,4 +1,4 @@
-package com.example.pickitbackend.entity;
+package com.example.pickitbackend.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
