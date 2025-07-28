@@ -1,0 +1,54 @@
+package com.example.pickitbackend.controller;
+
+
+import com.example.pickitbackend.dto.PopupRequestDto;
+import com.example.pickitbackend.dto.PopupResponseDto;
+import com.example.pickitbackend.service.PopupService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/popups")
+@Tag(name = "Popup", description = "팝업 관련 API")
+public class PopupController {
+    private final PopupService popupService;
+
+    // 팝업 저장 API
+    @PostMapping("/save")
+    @Operation(summary = "팝업 저장", description = "팝업을 저장합니다.")
+    public ResponseEntity<PopupResponseDto> createPopup(PopupRequestDto popupRequestDto) {
+        PopupResponseDto response = popupService.savePopup(popupRequestDto);
+        return ResponseEntity.ok(response);
+    }
+
+    // 팝업 전체 조회 API
+    @GetMapping("/all")
+    @Operation(summary = "모든 팝업 조회", description = "저장된 모든 팝업을 조회합니다.")
+    public ResponseEntity<List<PopupResponseDto>> getAllPopups() {
+        List<PopupResponseDto> response = popupService.getAllPopups();
+        return ResponseEntity.ok(response);
+    }
+
+    // 지역별 팝업 조회 API
+    @GetMapping("/address")
+    @Operation(summary = "지역별 팝업 조회", description = "특정 지역의 팝업을 조회합니다.")
+    public ResponseEntity<List<PopupResponseDto>> getPopupsByAddress(String address) {
+        List<PopupResponseDto> response = popupService.getPopupsByAddress(address);
+        return ResponseEntity.ok(response);
+    }
+
+    // 팝업 ID로 단일 팝업 조회 API
+    @GetMapping("/{id}")
+    @Operation(summary = "팝업 ID로 조회", description = "ID로 특정 팝업을 조회합니다.")
+    public ResponseEntity<PopupResponseDto> getPopupById(@PathVariable Long id) {
+        PopupResponseDto response = popupService.getPopupById(id);
+        return ResponseEntity.ok(response);
+    }
+
+}
