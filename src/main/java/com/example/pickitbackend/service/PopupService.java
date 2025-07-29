@@ -26,6 +26,7 @@ public class PopupService {
 
         Popup popup = Popup.builder()
                 .title(popupRequestDto.getTitle())
+                .address(popupRequestDto.getAddress())
                 .fullAddress(popupRequestDto.getFullAddress())
                 .date(popupRequestDto.getDate())
                 .comment(popupRequestDto.getComment())
