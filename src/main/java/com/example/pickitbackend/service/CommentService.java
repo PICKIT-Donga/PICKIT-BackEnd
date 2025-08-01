@@ -52,14 +52,7 @@ public class CommentService {
                 .map(this::convertToDto)
                 .toList();
     }
-
-    // src/main/java/com/example/pickitbackend/service/CommentService.java
-    @Transactional(readOnly = true)
-    public CommentResponseDto getCommentById(Long id) {
-        Comment comment = commentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("댓글을 찾을 수 없습니다."));
-        return convertToDto(comment);
-    }
+    
 
     @Transactional
     public CommentResponseDto updateComment(Long id, CommentRequestDto dto) {
