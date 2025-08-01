@@ -1,8 +1,6 @@
 package com.example.pickitbackend.controller;
 
-import com.example.pickitbackend.domain.Popup;
 import com.example.pickitbackend.dto.CommentRequestDto;
-import com.example.pickitbackend.repository.PopupRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

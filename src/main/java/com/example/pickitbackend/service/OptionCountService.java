@@ -1,12 +1,11 @@
 package com.example.pickitbackend.service;
 
 import com.example.pickitbackend.domain.OptionCount;
-import com.example.pickitbackend.domain.Popup;
 import com.example.pickitbackend.repository.OptionCountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service

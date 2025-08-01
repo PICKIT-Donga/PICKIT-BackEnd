@@ -1,13 +1,10 @@
 package com.example.pickitbackend.service;
 
 import com.example.pickitbackend.domain.Comment;
-import com.example.pickitbackend.domain.Popup;
 import com.example.pickitbackend.dto.CommentRequestDto;
 import com.example.pickitbackend.dto.CommentResponseDto;
 import com.example.pickitbackend.repository.CommentRepository;
-import com.example.pickitbackend.repository.PopupRepository;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.pickitbackend.repository.OptionCountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;

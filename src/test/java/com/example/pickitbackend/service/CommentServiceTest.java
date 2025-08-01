@@ -1,9 +1,7 @@
 package com.example.pickitbackend.service;
 
-import com.example.pickitbackend.domain.Popup;
 import com.example.pickitbackend.dto.CommentRequestDto;
 import com.example.pickitbackend.dto.CommentResponseDto;
-import com.example.pickitbackend.repository.PopupRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
