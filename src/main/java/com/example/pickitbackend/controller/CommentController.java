@@ -11,14 +11,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/comments")
 @RequiredArgsConstructor
+
+
+
 public class CommentController {
 
     private final CommentService commentService;
 
     @PostMapping
     public ResponseEntity<CommentResponseDto> createComment(@RequestBody CommentRequestDto dto) {
-        CommentResponseDto response = commentService.createComment(dto);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(commentService.createComment(dto));
     }
 
     @GetMapping
@@ -27,8 +29,8 @@ public class CommentController {
     }
 
     @GetMapping("/{id}")
-    public CommentResponseDto getCommentById(@PathVariable Long id) {
-        return commentService.getCommentById(id);
+    public ResponseEntity<CommentResponseDto> getComment(@PathVariable Long id) {
+        return ResponseEntity.ok(commentService.getCommentById(id));
     }
 
     @PutMapping("/{id}")

@@ -4,17 +4,19 @@ package com.example.pickitbackend.dto;
 import lombok.*;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class CommentRequestDto {
-    private String option1;
-    private String option2;
-    private int option1Count;
-    private int option2Count;
+    private Long popupId;
     private String content;
     private LocalDateTime visitTime;
-    private Long popupId;
+    // 후기 카테고리
+    private String serviceOption;
+    private String envOption;
+    private String itemOption;
+    // 현재상황 카테고리
+    private String waitStatus;
+    private String stockStatus;
+    private String crowdedness;
 }

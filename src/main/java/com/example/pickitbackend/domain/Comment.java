@@ -6,8 +6,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -17,20 +16,20 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String content;            // 댓글 내용
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "popup_id", nullable = false)
+    private Popup popup;
 
-    private String option1;             // 선택 옵션 (예: '좋아요', '싫어요')
-    private String option2;
+    private String content;
+    private LocalDateTime visitTime;
 
-    private int option1Count;
-    private int option2Count;// 옵션 카운트
+    // 후기 카테고리
+    private String serviceOption;
+    private String envOption;
+    private String itemOption;
 
-    private LocalDateTime visitTime;   // 방문 시간
-
-    private Long popupId;
-
-    // 나중에 Popup 엔티티가 만들어지면 ManyToOne 관계 추가할 수 있음
-    // 예: @ManyToOne(fetch = FetchType.LAZY)
-    //     @JoinColumn(name = "popup_id")
-    //     private Popup popup;
+    // 현재상황 카테고리
+    private String waitStatus;
+    private String stockStatus;
+    private String crowdedness;
 }
