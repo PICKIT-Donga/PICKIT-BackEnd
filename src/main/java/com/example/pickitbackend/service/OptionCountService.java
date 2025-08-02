@@ -5,6 +5,8 @@ import com.example.pickitbackend.repository.OptionCountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.example.pickitbackend.domain.Popup;
+
 
 import java.util.List;
 
@@ -13,6 +15,8 @@ import java.util.List;
 public class OptionCountService {
 
     private final OptionCountRepository optionCountRepository;
+
+
 
     @Transactional
     public void increaseCount(Popup popup, String category, String optionValue) {

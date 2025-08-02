@@ -7,6 +7,8 @@ import com.example.pickitbackend.repository.CommentRepository;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.example.pickitbackend.repository.PopupRepository;
+import com.example.pickitbackend.domain.Popup;
 import java.util.List;
 
 @Service
@@ -52,7 +54,15 @@ public class CommentService {
                 .map(this::convertToDto)
                 .toList();
     }
-    
+
+    @Transactional(readOnly = true)
+    public CommentResponseDto getCommentById(Long id) {
+        Comment comment = commentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("댓글을 찾을 수 없습니다."));
+        return convertToDto(comment);
+    }
+
+
 
     @Transactional
     public CommentResponseDto updateComment(Long id, CommentRequestDto dto) {

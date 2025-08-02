@@ -4,6 +4,8 @@ import com.example.pickitbackend.dto.OptionCountResponseDto;
 import com.example.pickitbackend.service.OptionCountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import com.example.pickitbackend.repository.PopupRepository;
+import com.example.pickitbackend.domain.Popup;
 
 import java.util.List;
 
