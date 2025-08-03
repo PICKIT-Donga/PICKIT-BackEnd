@@ -30,6 +30,7 @@ public class Popup {
     @Column(columnDefinition = "TEXT")
     private String contents;
 
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
 
     @ElementCollection
