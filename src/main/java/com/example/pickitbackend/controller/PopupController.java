@@ -18,10 +18,11 @@ import java.util.List;
 public class PopupController {
     private final PopupService popupService;
 
+
     // 팝업 저장 API
     @PostMapping("/save")
     @Operation(summary = "팝업 저장", description = "팝업을 저장합니다.")
-    public ResponseEntity<PopupDetailResponseDto> createPopup(@RequestBody PopupRequestDto popupRequestDto) {
+    public ResponseEntity<PopupResponseDto> createPopup(@RequestBody PopupRequestDto popupRequestDto) {
         return ResponseEntity.ok(popupService.savePopup(popupRequestDto));
     }
 
