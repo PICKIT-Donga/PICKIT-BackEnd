@@ -52,6 +52,7 @@ public class PopupService {
     public List<PopupListResponseDto> getAllPopups() {
         return popupRepository.findAll().stream()
                 .map(p -> PopupListResponseDto.builder()
+                        .id(p.getPopupId())
                         .title(p.getTitle())
                         .address(p.getAddress())
                         .date(p.getDate())
@@ -64,6 +65,7 @@ public class PopupService {
     public List<PopupAddressResponseDto> getPopupsByAddress(String address) {
         return popupRepository.findByAddressContaining(address).stream()
                 .map(p -> PopupAddressResponseDto.builder()
+                        .id(p.getPopupId())
                         .title(p.getTitle())
                         .address(p.getAddress())
                         .date(p.getDate())
