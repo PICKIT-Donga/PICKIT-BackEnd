@@ -18,6 +18,7 @@ public class CommentService {
     private final PopupRepository popupRepository;
     private final OptionCountService optionCountService;
 
+
     @Transactional
     public CommentResponseDto createComment(CommentRequestDto dto) {
         Popup popup = popupRepository.findById(dto.getPopupId())
@@ -82,11 +83,19 @@ public class CommentService {
 
     @Transactional
     public void deleteComment(Long id) {
-        if (!commentRepository.existsById(id)) {
-            throw new RuntimeException("댓글을 찾을 수 없습니다.");
-        }
-        commentRepository.deleteById(id);
+        Comment comment = commentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("댓글을 찾을 수 없습니다."));
+
+        optionCountService.decreaseCount(comment.getPopup(), "serviceOption", comment.getServiceOption());
+        optionCountService.decreaseCount(comment.getPopup(), "envOption", comment.getEnvOption());
+        optionCountService.decreaseCount(comment.getPopup(), "itemOption", comment.getItemOption());
+        optionCountService.decreaseCount(comment.getPopup(), "waitStatus", comment.getWaitStatus());
+        optionCountService.decreaseCount(comment.getPopup(), "stockStatus", comment.getStockStatus());
+        optionCountService.decreaseCount(comment.getPopup(), "crowdedness", comment.getCrowdedness());
+
+        commentRepository.delete(comment);
     }
+
 
     // 기타 CRUD 메서드 작성 (생략 가능)
 
